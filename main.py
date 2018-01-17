@@ -80,7 +80,6 @@ def yandex_detect_lang(text, key, url, hint='fr,es'):
 	return None
 
 def yandex_translate(text, key, url, lang='en'):
-	lang = 'en'
 	txt = encode_text(text)
 
 	# TODO: check length of txt, and split somewhere logical if too long (10k chars?)
