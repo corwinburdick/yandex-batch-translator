@@ -62,25 +62,24 @@ def encode_text(text):
 def decode_text(text):
 	return urllib.unquote_plus(txt)
 
-# # function for each API call used
-# def yandex_detect_lang(text, key, url):
-# 	hint = 'fr,es'
-# 	txt = encode_text(text)
+# function for each API call used
+def yandex_detect_lang(text, key, url, hint='fr,es'):
+	txt = encode_text(text)
 
-# 	request = '%s/detect?key=%s&text=%s&[hint=%s]' % (url, key, txt, hint)
-# 	r = requests.get(request)
-# 	if r.status_code == 200: # success
-# 		return r.json()['lang']
-# 	elif r.status_code == 401: #invalid api key
-# 		print "ERROR: INVALID API KEY"
-# 		return 
-# 	elif r.status_code == 402: #blocked api key
-# 		print "ERROR: BLOCKED API KEY"
-# 	elif r.status_code == 404: #exceeded daily limit
-# 		print "ERROR: EXCEEDED DAILY LIMIT OF FREE TRANSLATIONS"
-# 	return None
+	request = '%s/detect?key=%s&text=%s&[hint=%s]' % (url, key, txt, hint)
+	r = requests.get(request)
+	if r.status_code == 200: # success
+		return r.json()['lang']
+	elif r.status_code == 401: #invalid api key
+		print "ERROR: INVALID API KEY"
+		return 
+	elif r.status_code == 402: #blocked api key
+		print "ERROR: BLOCKED API KEY"
+	elif r.status_code == 404: #exceeded daily limit
+		print "ERROR: EXCEEDED DAILY LIMIT OF FREE TRANSLATIONS"
+	return None
 
-def yandex_translate(text, key, url):
+def yandex_translate(text, key, url, lang='en'):
 	lang = 'en'
 	txt = encode_text(text)
 
